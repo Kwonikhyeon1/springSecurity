@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title th:replace="~{admin/include/title::title}"></title>
+
+<link th:href="@{/css/common.css}" rel="stylesheet">
+<link th:href="@{/css/admin/header_nav_footer.css}" rel="stylesheet">
+<link th:href="@{/css/admin/content.css}" rel="stylesheet">
+
+<script type="text/javascript" th:replace="~{/include/common_js::jquery_cdn}"></script>
+<script type="text/javascript" th:src="@{/js/admin/admin.js}"></script>
+</head>
+<body>
+
+	<header th:replace="~{admin/include/header_nav_footer::header}">
+	</header>
+	
+	<nav th:replace="~{admin/include/header_nav_footer::nav}">
+	</nav>
+	
+	<article>
+		
+		<div class="word">MEMBER LIST</div>
+
+		<div class="content">
+			
+			<!-- <span th:text="${memberDtos}"></span> -->
+			
+			<table>
+				<thead>
+					<tr>
+						<th>NO</th>
+						<th>ID</th>
+						<th>PW</th>
+						<th>AUTHORITY_NO</th>
+						<th>ISACCOUNTNONEXPIRED</th>
+						<th>ISACCOUNTNONLOCKED</th>
+						<th>ISCREDENTIALSNONEXPIRED</th>
+						<th>ISENABLED</th>
+						<th>REG_DATE</th>
+						<th>MOD_DATE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="memberDto : ${memberDtos}">
+						<td th:text="${memberDto.m_no}"></td>
+						<td th:text="${memberDto.m_id}"></td>
+						<td th:text="${memberDto.m_pw.substring(0, 7) + '...'}"></td>
+						<td id="member_authority">
+							<select th:id="${memberDto.m_id}" 
+									th:data-m_id="${memberDto.m_id}" 
+									th:data-m_no="${memberDto.m_no}"
+									th:data-m_authority_no="${memberDto.m_authority_no}">
+								<option 
+									th:each="authorityDto : ${authorityDtos}" 
+									th:value="${authorityDto.m_authority_no}" 
+									th:text="${authorityDto.m_authority_role_name}" 
+									th:selected="${authorityDto.m_authority_no == memberDto.m_authority_no}">
+								</option>
+							</select>
+						</td>
+						<td th:text="${memberDto.m_isaccountnonexpired}"></td>
+						<td th:text="${memberDto.m_isaccountnonlocked}"></td>
+						<td th:text="${memberDto.m_iscredentialsnonexpired}"></td>
+						<td th:text="${memberDto.m_isenabled}"></td>
+						<td th:text="${memberDto.m_reg_date}"></td>
+						<td th:text="${memberDto.m_mod_date}"></td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+
+	</article>
+	
+	<footer th:replace="~{admin/include/header_nav_footer::footer}">
+	</footer>
+
+</body>
+</html>

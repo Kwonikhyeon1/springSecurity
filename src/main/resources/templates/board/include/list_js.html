@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <script th:fragment="js" th:inline="javascript" type="text/javascript">
+
+        $(document).ready(function () {
+            console.log("ready document!");
+
+            setPage();
+            initEvents();
+            btnClickEvents();
+
+        });
+
+        function setPage() {
+            console.log("setPage");
+
+            let pageMaker = [[${resultMap.pageMaker}]]
+
+            $('#article_wrap > div.page_wrap > div.page_number').children().remove();
+
+            if (pageMaker.prev) {
+                $('#article_wrap > div.page_wrap > div.page_number').append('<a href="#none" data-pagenum="' + (pageMaker.startPage - 1) + '">PREV</a>');
+            }
+            if (pageMaker.criteria.pageNum > 10) {
+                $('#article_wrap > div.page_wrap > div.page_number').append('<a href="/board/list?pageNum=1">1</a><span>...</span>');
+            }
+            for (let p = parseInt(pageMaker.startPage); p <= parseInt(pageMaker.endPage); p++) {
+                $('#article_wrap > div.page_wrap > div.page_number').append('<a href="#none" data-pagenum="'+ p + '">' + p + '</a>')
+
+            }
+            $('#article_wrap > div.page_wrap > div.page_number a[data-pagenum="' + pageMaker.criteria.pageNum + '"]').addClass('selectedPageNum');
+
+            if (pageMaker.next) {
+                $('#article_wrap > div.page_wrap > div.page_number').append('<a href="#none" data-pagenum="' + (pageMaker.endPage + 1) + '">NEXT</a>');
+            }
+            $('#article_wrap > div.page_wrap > div.page_goto > span.page_total_num').text(pageMaker.totalPage.toString());
+        }
+
+        function initEvents() {
+            console.log("initEvents");
+
+            $(document).on('click', '#article_wrap > div.page_wrap > div.page_number a', function () {
+                console.log("PAGE NUMBER BTN CLICKED");
+
+                let pageNum = $(this).data('pagenum');
+                console.log("pageNum--->", pageNum);
+
+                if (pageNum != undefined) {
+                    location.href = "/board/list?pageNum=" + pageNum;
+
+                }else
+                console.error("pageNum is undefined")
+
+
+            });
+
+        }
+
+        function btnClickEvents () {
+            console.log("btnClickEvents()");
+
+            let pageMaker = [[${resultMap.pageMaker}]]; // 자바 객체 소환
+            let lastPage = pageMaker.totalPage; // totalPage 값을 직접 가져옵니다.
+
+            $(document).on('click', '#article_wrap a.goto_page_btn', function () {
+                let writePage = $('#article_wrap div.page_goto input[name="page_target_num"]').val();
+                writePage = parseInt(writePage, 10); // 문자열을 정수로 변환
+                console.log("writePage--->", writePage);
+
+                if (writePage < 1 || writePage > lastPage || isNaN(writePage)) {
+                    alert("페이지가 존재하지 않습니다.");
+                    location.reload();
+
+                } else {
+                    location.href = "/board/list?pageNum=" + writePage;
+                }
+            });
+        }
+
+
+
+    </script>
+
+</html>

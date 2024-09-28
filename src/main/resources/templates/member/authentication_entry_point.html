@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="~{member/include/title::title}"></title>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/member/header_nav_footer.css}" rel="stylesheet">
+    <link th:href="@{/css/member/content.css}" rel="stylesheet">
+</head>
+<body>
+<header th:replace="~{member/include/header_nav_footer::header}">
+</header>
+<nav th:replace="~{member/include/header_nav_footer::nav}">
+</nav>
+
+<article>
+    <div class="word">Authentication is required</div>
+</article>
+
+<footer th:replace="~{member/include/header_nav_footer::footer}">
+</footer>
+</body>
+</html>

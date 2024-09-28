@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title th:replace="~{member/include/title::title}"></title>
+
+<link th:href="@{/css/common.css}" rel="stylesheet">
+<link th:href="@{/css/member/header_nav_footer.css}" rel="stylesheet">
+<link th:href="@{/css/member/content.css}" rel="stylesheet">
+
+</head>
+<body>
+
+	<header th:replace="~{member/include/header_nav_footer::header}">
+	</header>
+	
+	<nav th:replace="~{member/include/header_nav_footer::nav}">
+	</nav>
+	
+	<article>
+		
+		<div class="word">LOGIN MEMBER FORM</div>
+		
+		<div class="content">
+			<form action="/member/login_member_confirm" name="login_member_form" method="post">
+				<input type="text" name="m_id" placeholder="INPUT MEMBER ID">
+				<br>
+				<input type="password" name="m_pw" placeholder="INPUT MEMBER PW">
+				<br>
+				<input type="submit" value="로그인">
+				<input type="reset" value="초기화">
+			</form>		
+		</div>
+		
+	</article>
+	
+	<footer th:replace="~{member/include/header_nav_footer::footer}">
+	</footer>
+
+</body>
+</html>

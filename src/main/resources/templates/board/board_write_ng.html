@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="~{member/include/title::title}"></title>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/board/header_nav_footer.css}" rel="stylesheet">
+    <link th:href="@{/css/board/board_write.css}" rel="stylesheet">
+
+<!--    <script type="text/javascript" th:replace="~{/include/common_js::jquery_cdn}"></script>-->
+</head>
+<body>
+
+<th:block sec:authorize="hasAnyRole('ADMIN')">
+    <header th:replace="~{admin/include/header_nav_footer::header}">
+    </header>
+
+    <nav th:replace="~{admin/include/header_nav_footer::nav}">
+    </nav>
+
+</th:block>
+
+
+<th:block sec:authorize="hasAnyRole('USER')">
+    <header th:replace="~{member/include/header_nav_footer::header}">
+    </header>
+    <nav th:replace="~{member/include/header_nav_footer::nav}">
+    </nav>
+
+</th:block>
+
+<article>
+    <div id="article_wrap">
+        <div class="word">BOARD WRITE FAIL</div>
+    </div>
+</article>
+
+<footer th:replace="~{admin/include/header_nav_footer::footer}">
+</footer>
+
+</body>
+</html>

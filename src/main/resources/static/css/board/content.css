@@ -1,0 +1,20 @@
+article {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+article div.word {
+	margin: 50px 0;
+	text-align: center;
+	font-weight: bolder;
+}
+
+article div.content {
+	margin: 30px 0 70px;
+	text-align: center;
+}
+
+article div.content a {
+	text-decoration: underline;
+
+}

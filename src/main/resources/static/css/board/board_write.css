@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px; /* 전체 여백 */
+}
+
+#article_wrap {
+    background-color: #ffffff; /* 글쓰기 영역 배경 색상 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    padding: 20px; /* 내부 여백 */
+    max-width: 800px; /* 최대 너비 */
+    margin: 40px auto; /* 중앙 정렬 */
+}
+
+.word {
+    font-size: 24px; /* 제목 글꼴 크기 */
+    font-weight: bold; /* 제목 두껍게 */
+    margin-bottom: 20px; /* 제목과 다른 요소 사이 여백 */
+    text-align: center; /* 중앙 정렬 */
+}
+
+table {
+    width: 100%; /* 테이블 너비 */
+    border-collapse: collapse; /* 테이블 경계선 겹치지 않도록 */
+}
+
+td {
+    padding: 10px; /* 셀 내부 여백 */
+    vertical-align: top; /* 수직 정렬 */
+}
+
+input[type="text"],
+textarea {
+    width: 80%; /* 입력 필드 너비 */
+    padding: 10px; /* 내부 여백 */
+    border: 1px solid #ccc; /* 경계선 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    resize: none; /* 텍스트 영역 크기 조절 불가 */
+}
+
+textarea {
+    height: 200px; /* 텍스트 영역 높이 */
+}
+
+input[type="submit"],
+input[type="button"] {
+    background-color: rgba(0, 0, 0, 0.7); /* 버튼 배경 색상 */
+    color: white; /* 글자 색상 */
+    border: none; /* 경계선 제거 */
+    padding: 10px 15px; /* 내부 여백 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    cursor: pointer; /* 커서 모양 변경 */
+    margin-right: 10px; /* 버튼 사이 여백 */
+    font-size: 16px; /* 글꼴 크기 */
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* 호버 시 버튼 색상 */
+}

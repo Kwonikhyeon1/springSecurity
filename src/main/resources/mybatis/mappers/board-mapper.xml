@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.office.test.board.BoardMapper">
+
+	<select id="getAllPost"
+			parameterType="com.office.test.board.page.Criteria"
+			resultType="com.office.test.board.BoardDto">
+
+		SELECT *
+		FROM TBL_BOARD
+		ORDER BY B_REG_DATE DESC, B_MOD_DATE DESC, B_GROUP DESC, B_STEP ASC
+			LIMIT #{skip}, #{amount}
+
+	</select>
+
+	<select id="getTotalCnt" resultType="Integer">
+
+		SELECT COUNT(*) FROM TBL_BOARD
+
+	</select>
+
+	<insert id="insertNewBoard" parameterType="com.office.test.board.BoardDto">
+		INSERT INTO
+			TBL_BOARD(
+			B_NO,
+			B_OWNER_ID,
+			B_TITLE,
+			B_BODY,
+			B_HIT,
+			B_STEP,
+			B_INDENT
+		) VALUES (#{b_no}, #{b_owner_id}, #{b_title}, #{b_body}, #{b_hit}, #{b_step}, #{b_indent})
+	</insert>
+
+</mapper>

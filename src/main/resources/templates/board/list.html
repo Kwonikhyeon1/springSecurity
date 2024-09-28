@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="~{member/include/title::title}"></title>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/board/header_nav_footer.css}" rel="stylesheet">
+    <link th:href="@{/css/board/list.css}" rel="stylesheet">
+
+    <script type="text/javascript" th:replace="~{/include/common_js::jquery_cdn}"></script>
+    <script type="text/javascript" th:replace="~{/board/include/list_js::js}"></script>
+</head>
+<body>
+
+<th:block sec:authorize="hasAnyRole('ADMIN')">
+    <header th:replace="~{admin/include/header_nav_footer::header}">
+    </header>
+
+    <nav th:replace="~{admin/include/header_nav_footer::nav}">
+    </nav>
+
+</th:block>
+
+
+<th:block sec:authorize="hasAnyRole('USER')">
+    <header th:replace="~{member/include/header_nav_footer::header}">
+    </header>
+    <nav th:replace="~{member/include/header_nav_footer::nav}">
+    </nav>
+
+</th:block>
+
+
+
+<article>
+    <div id="article_wrap">
+    <div class="word">BOARD LIST</div>
+
+        <div class="board_list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>B_NO</th>
+                        <th>B_OWNER_ID</th>
+                        <th>B_TITLE</th>
+                        <th>B_REG_DATE</th>
+                        <th>B_HIT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="boardDto : ${resultMap.boardDtos}">
+                        <td th:text="${boardDto.b_no}"></td>
+                        <td th:text="${boardDto.b_owner_id}"></td>
+                        <td th:text="${boardDto.b_title}"></td>
+                        <td th:text="${boardDto.b_mod_date}"></td>
+                        <td th:text="${boardDto.b_hit}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br><br>
+<!--페이지시작-->
+        <div class="page_wrap">
+            <div class="page_number">
+
+            </div>
+            <div class="page_goto">
+                <input type="number" name="page_target_num">&nbsp; &#47; <span class="page_total_num"></span>
+                <a href="#none" class="goto_page_btn">Go to Page</a>
+            </div>
+            <div class="board_write">
+                <a th:href="@{/board/write_form}">WRITE</a>
+            </div>
+        </div>
+    </div>
+
+</article>
+
+
+<footer th:replace="~{admin/include/header_nav_footer::footer}">
+</footer>
+
+</body>
+</html>

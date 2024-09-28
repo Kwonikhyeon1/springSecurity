@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title th:replace="~{admin/include/title::title}"></title>
+
+<link th:href="@{/css/common.css}" rel="stylesheet">
+<link th:href="@{/css/admin/header_nav_footer.css}" rel="stylesheet">
+<link th:href="@{/css/admin/content.css}" rel="stylesheet">
+
+</head>
+<body>
+
+	<header th:replace="~{admin/include/header_nav_footer::header}">
+	</header>
+	
+	<nav th:replace="~{admin/include/header_nav_footer::nav}">
+	</nav>
+	
+	<article>
+		
+		<div class="word">MODIFY ADMIN FAIL</div>
+
+	</article>
+	
+	<footer th:replace="~{admin/include/header_nav_footer::footer}">
+	</footer>
+
+</body>
+</html>

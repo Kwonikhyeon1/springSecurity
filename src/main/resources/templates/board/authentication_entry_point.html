@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="~{member/include/title::title}"></title>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/board/content.css}" rel="stylesheet">
+</head>
+<body>
+    <article>
+
+        <div class="word">Authentication is required</div>
+
+        <div class="content">
+            <a href="/member/login_member_form">GO MEMBER LOGIN FORM</a>
+            &nbsp;&nbsp;
+            <a href="/admin/login_admin_form">GO ADMIN LOGIN FORM</a>
+        </div>
+
+    </article>
+</body>
+</html>

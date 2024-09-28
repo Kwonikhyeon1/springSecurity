@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title th:replace="~{admin/include/title::title}"></title>
+
+<link th:href="@{/css/common.css}" rel="stylesheet">
+<link th:href="@{/css/admin/header_nav_footer.css}" rel="stylesheet">
+<link th:href="@{/css/admin/content.css}" rel="stylesheet">
+
+</head>
+<body>
+
+	<header th:replace="~{admin/include/header_nav_footer::header}">
+	</header>
+	
+	<nav th:replace="~{admin/include/header_nav_footer::nav}">
+	</nav>
+	
+	<article>
+		
+		<div class="word">MODIFY ADMIN FORM</div>
+		
+		<div class="content">
+			<form
+					action="/admin/modify_admin_confirm" 
+					name="modify_admin_form"  
+					method="post">
+					
+					<input type="hidden" th:value="${loginedAdminDto.a_no}" name="a_no">
+					
+					<input type="text" name="a_id" th:value="${loginedAdminDto.a_id}">
+					<br>
+					<input type="password" name="a_pw" value="******" placeholder="INPUT ADMIN PW">
+					<br>
+					<input type="submit" value="관리자 계정수정">
+					<input type="reset" value="초기화">
+					
+			</form>
+		</div>
+		
+	</article>
+	
+	<footer th:replace="~{admin/include/header_nav_footer::footer}">
+	</footer>
+	
+</body>
+</html>
